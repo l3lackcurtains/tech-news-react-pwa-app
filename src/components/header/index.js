@@ -16,7 +16,7 @@ class Header extends Component {
 		
 	}
 	componentWillMount() {
-		if(window.location.href == 'http://localhost:8080/'){
+		if(window.location.href == ('http://localhost:3000/' || 'https://tnpwa.herokuapp.com/') ){
 			this.setState({home: true})
 		}
 	}
