@@ -72,6 +72,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(), // Hot reload on the go
+	    new webpack.NoErrorsPlugin()
 	]
 	
 }
