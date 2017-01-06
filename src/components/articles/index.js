@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import CircularProgress from 'material-ui/CircularProgress';
 import fetchNews from '../../redux/actions/news'
 import store from '../../redux'
 import Article from './article'
@@ -13,7 +14,7 @@ class Articles extends Component {
         const {news} = this.props
         return (
           <div>
-            {news.data.map( (n,i) => {
+            {news.isLoading ? <CircularProgress className="loading" size={60} thickness={7} />: news.data.map( (n,i) => {
             return (
               <Article key={i} n={n} />
             )

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import {Card, CardHeader, CardMedia, CardTitle, CardText, CardActions} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
-
+const styles = {
+  card: {
+    marginBottom: 8
+  }
+}
 class Article extends Component {
 
 	render() {
@@ -11,7 +15,7 @@ class Article extends Component {
         fontSize: 18
       }
       return (
-        <Card>
+        <Card style={styles.card}>
           <CardMedia
           overlay={<CardTitle title={n.title} subtitle={author} titleStyle={titleStyle}/>}
           >
@@ -19,7 +23,7 @@ class Article extends Component {
           </CardMedia>
           
           <CardActions>
-            <FlatButton label="Read All" href={n.url}/>
+            <FlatButton label="Continue Reading.." href={n.url}/>
           </CardActions>
         </Card>
     );

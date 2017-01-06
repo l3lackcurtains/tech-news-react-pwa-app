@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {browserHistory} from 'react-router'
 import {GridList, GridTile} from 'material-ui/GridList'
 import Subheader from 'material-ui/Subheader'
+import {Card} from 'material-ui/Card'
+import Header from '../header'
 import Articles from '../articles'
 import fetchSrc from '../../redux/actions/sources'
 import store from '../../redux'
@@ -11,6 +13,8 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+    height: 160,
+    marginTop: 60
   },
   gridList: {
     display: 'flex',
@@ -18,9 +22,19 @@ const styles = {
     overflowX: 'auto',
   },
   gridTile: {
-  	width: 100,
-  	height: 100,
+  	width: 80,
+  	height: 80,
   	margin: 8
+  },
+  card:{
+    width: 80,
+    height: 80,
+    margin: 8,
+    overflow: "hidden"
+  },
+  img : {
+    width: 80,
+    height: "auto"
   }
 };
 
@@ -30,16 +44,16 @@ class home extends Component {
    componentWillMount() {
         store.dispatch(fetchSrc() )
     }
-   handleNavigate( id){
+   handleNavigate( id, name){
 	   	const path = `/news`
-	   	browserHistory.push({pathname: path, query: {srcId: id} })
+	   	browserHistory.push({pathname: path, query: {id: id, name: name} })
 
     }
   render() {
   	const {src} = this.props
     return (
       <div>
-        <Header />
+        <Header title="Tech News"/>
         <div style={styles.root}>
         	<Subheader>Top News From: </Subheader>
     		<GridList
@@ -47,9 +61,11 @@ class home extends Component {
   	      cols={2.2}
   	    >
   	      {src.data.map((s, i) => (
-  	        <GridTile key={i} style={styles.gridTile} >
-  	          <img src={s.urlsToLogos.medium} onTouchTap={() => this.handleNavigate(s.id)}/>
-  	        </GridTile>
+            <Card style={styles.card} key={i} onTouchTap={() => this.handleNavigate(s.id, s.name)}>
+    	        <GridTile style={styles.gridTile} >
+    	          <img src={s.urlsToLogos.medium} style={styles.img}/>
+    	        </GridTile>
+            </Card>
   	      ))}
   	    </GridList>
         </div>

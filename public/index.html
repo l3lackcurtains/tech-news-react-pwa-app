@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="icons/app-icon.png">
     <link rel="manifest" href="manifest.json">
-    <title>React App</title>
+    <title>Tech News</title>
     <style>
     	#offline{
     		position: fixed;
@@ -24,17 +24,7 @@
     <script src="bundle.js"></script>
     <script>
     if('serviceWorker' in navigator) {
-       navigator.serviceWorker.register('sw.js').then(function() {
-
-			if (navigator.serviceWorker.controller) {
-				
-			} else {
-		      	document.getElementById('offline').css({'display': 'none'})
-			}
-		    console.log('CLIENT: service worker registration complete.');
-		  }, function() {
-		    console.log('CLIENT: service worker registration failure.');
-		  });
+       navigator.serviceWorker.register('sw.js');
 	} else {
 		console.log('CLIENT: service worker is not supported.');
     }

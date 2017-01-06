@@ -6,6 +6,9 @@ import {browserHistory} from 'react-router'
 import IconButton from 'material-ui/IconButton'
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import {Card, CardMedia} from 'material-ui/Card'
+import './header.css';
+var himg = require('../../assets/images/desk.jpg')
 class Header extends Component {
 	constructor(props){
 		super(props)
@@ -29,13 +32,14 @@ class Header extends Component {
 
 	render() {
 		const appbarStyle = {
-			backgroundColor: "#191919",
+			backgroundColor: "#283593",
 			color: "#fff"
-		}        
+		}
+		const {title} = this.props       
         return (
-          <div>
+          <div className="header">
             <AppBar
-            	title="Hacker News"
+            	title={title}
             	style={appbarStyle}
             	iconElementLeft={this.state.home ? <IconButton><NavigationMenu /></IconButton>:<IconButton><NavigationArrowBack /></IconButton>}
             	onLeftIconButtonTouchTap={this.handleToggle}
@@ -45,8 +49,12 @@ class Header extends Component {
             	docked={false}
             	width={200}
             	open={this.state.open}
-            	onRequestChange={ (open) => this.setState({open})}
-            >
+            	onRequestChange={ (open) => this.setState({open})}>
+            	<Card>
+		          <CardMedia >
+		            <img src={himg} />
+		          </CardMedia>
+		        </Card>
             	<MenuItem>About</MenuItem>
             	<MenuItem>Contact</MenuItem>
             </Drawer>

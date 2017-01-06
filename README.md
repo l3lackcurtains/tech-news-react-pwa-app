@@ -1,13 +1,11 @@
-# Starter project for React Applications
+# Tech News Progressive Web App in ReactJS
 >Build with React, Redux, React Router, Webpack, Babel, Axios
-
->This is example of smaple news Application.
 
 ##starting the project
 ```
-  `npm start`
+  npm start
 ```
 
 ##Things to add in future
--Service Workers
--Material Design
+>Displaying Network status
+>Navigation Drawer Update

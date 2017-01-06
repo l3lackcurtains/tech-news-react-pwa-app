@@ -26,7 +26,6 @@ const recErr = (json) => {
 // Dispatch Src Request, Response and Error
 const fetchSrc = () =>
 	(dispatch) => {
-			
 		dispatch(reqSrc())
 		const url = "https://newsapi.org/v1/sources"
 		const res = axios({

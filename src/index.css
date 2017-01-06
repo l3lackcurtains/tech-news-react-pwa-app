@@ -5,3 +5,9 @@ body {
   overflow-x: hidden;
   font-family: sans-serif;
 }
+
+.loading{
+	position: absolute;
+	top: 45%;
+	left: 45%;
+}

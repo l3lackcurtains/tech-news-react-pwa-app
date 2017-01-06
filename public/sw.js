@@ -32,10 +32,7 @@ self.addEventListener('activate', function(e) {
   return self.clients.claim();
 });
 
-
-
 self.addEventListener('fetch', function(e) {
-  console.log('[Service Worker] Fetch', e.request.url);
   var dataUrl = 'https://newsapi.org/v1/';
   if (e.request.url.indexOf(dataUrl) > -1) {
     e.respondWith(
