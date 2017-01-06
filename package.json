@@ -37,7 +37,7 @@
     "sw-toolbox": "^3.4.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
+    "build": "SET NODE_ENV=production cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "start": "node ./server/app.js"
   }
 }
