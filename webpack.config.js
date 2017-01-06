@@ -15,7 +15,7 @@ module.exports = {
 		devtool: 'eval',
 		hot: true,
 		inline: true,
-		port: process.env.PORT || 5000,
+		port: process.env.PORT || 3000,
 		historyApiFallback: true
 	},
 	module: {
