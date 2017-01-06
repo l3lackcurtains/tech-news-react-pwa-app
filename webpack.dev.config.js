@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
 	devtool: 'source-map',
 	entry: [ 
-		path.join(__dirname,'webpack-hot-middleware/client'),
+		'webpack-hot-middleware/client',
 		path.join(__dirname, 'src/index.js')
 	],
 	output: {
