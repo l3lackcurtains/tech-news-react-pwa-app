@@ -15,6 +15,5 @@ if (process.env.NODE_ENV !== 'production') {
     publicPath: config.output.publicPath
   }))
 }
-
 app.listen(port)
 console.log(`Listening at http://localhost:${port}`)

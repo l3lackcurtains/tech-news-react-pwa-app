@@ -5,7 +5,8 @@ var filesToCache = [
   '/',
   '/index.html',
   '/bundle.js',
-  '/d07e9f7d34d48d48c062e41997a6bd46.jpg'
+  '/d07e9f7d34d48d48c062e41997a6bd46.jpg',
+  'bundle.js.map'
 ];
 self.addEventListener('install', function(e) {
   e.waitUntil(
