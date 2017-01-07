@@ -24,7 +24,8 @@
     <script src="bundle.js"></script>
     <script>
     if('serviceWorker' in navigator) {
-       navigator.serviceWorker.register('sw.js');
+        console.log("sw registered")
+       navigator.serviceWorker.register('/sw.js');
 	} else {
 		console.log('CLIENT: service worker is not supported.');
     }
