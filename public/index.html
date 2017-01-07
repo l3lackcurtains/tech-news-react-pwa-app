@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="icons/app-icon.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="../build/icons/app-icon.png">
+    <link rel="manifest" href="../build/manifest.json">
     <title>Tech News</title>
     <style>
     	#offline{
@@ -24,7 +24,7 @@
     <script src="bundle.js"></script>
     <script>
     if('serviceWorker' in navigator) {
-       navigator.serviceWorker.register('sw.js');
+       navigator.serviceWorker.register('/../build/sw.js');
 	} else {
 		console.log('CLIENT: service worker is not supported.');
     }
