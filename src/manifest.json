@@ -2,7 +2,7 @@
   "short_name": "TechNews",
   "name": "Tech News",
    "icons": [{
-      "src": "assets/images/assets/images/icons/app-icon.png",
+      "src": "assets/images/icons/app-icon.png",
       "type": "image/png",
       "sizes": "32x32"
     }, {
