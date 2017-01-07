@@ -1,6 +1,7 @@
 "use strict";
 const path = require('path')
 const webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -21,7 +22,11 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    })
+    }),
+      new CopyWebpackPlugin([
+        {from: 'public'}
+        ]
+      )
   ],
 
   module: {

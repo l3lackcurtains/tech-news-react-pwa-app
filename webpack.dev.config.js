@@ -1,7 +1,8 @@
 "use strict";
 var webpack = require('webpack');
 var path = require('path');
-
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
 	devtool: 'source-map',
 	entry: [ 
@@ -66,7 +67,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(), // Hot reload on the go
-	    new webpack.NoErrorsPlugin()
+	    new webpack.NoErrorsPlugin(),
 	]
 	
 }

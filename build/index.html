@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="icons/app-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <title>Tech News</title>
+    <style>
+    	#offline{
+    		position: fixed;
+    		bottom: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 25px;
+    		padding: 18px;
+    		background: #191919;
+    		color: #fff;
+    	}
+    </style>
+  </head>
+  <body>
+    <div id="root">Loading</div>
+    <script src="bundle.js"></script>
+    <script>
+    if('serviceWorker' in navigator) {
+       navigator.serviceWorker.register('sw.js');
+	} else {
+		console.log('CLIENT: service worker is not supported.');
+    }
+    </script>
+  </body>
+</html>
