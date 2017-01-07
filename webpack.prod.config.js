@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'source-map',
   entry: path.join(__dirname, 'src/index.js'),
   output: {
-    publicPath: '/',
+    publicPath: 'build/',
     path: path.join(__dirname, 'build/'),
     filename: 'bundle.js'
   },
@@ -28,7 +28,10 @@ module.exports = {
       new CopyWebpackPlugin([
       { from: './src/index.html', to: 'index.html' },
       { from: './src/manifest.json', to: 'manifest.json' },
-      { from: './src/sw.js', to: 'sw.js' }
+      { from: './src/sw.js', to: 'sw.js' },
+      {from: './src/assets/images/icons/app-icon.png', to: 'assets/images/icons/app-icon.png'},
+      {from: './src/assets/images/icons/app-icon.svg', to: 'assets/images/icons/app-icon.svg'},
+      {from: './src/assets/images/icons/app-icon-256.png', to: 'assets/images/icons/app-icon-256.png'}
     ]),
   ],
 
