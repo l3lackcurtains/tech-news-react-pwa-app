@@ -5,20 +5,21 @@ var filesToCache = [
   '/',
   '/index.html',
   '/bundle.js',
-  '/d07e9f7d34d48d48c062e41997a6bd46.jpg'
+  '/d07e9f7d34d48d48c062e41997a6bd46.jpg',
+  'bundle.js.map'
 ];
 self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName).then(function(cache) { 
       return cache.addAll(filesToCache);
     }).then(function() {
-		console.log('[ServiceWorker] Installed');
+    console.log('[ServiceWorker] Installed');
     })
   );
 });
 
 self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate', e.request.url);
+  console.log('[ServiceWorker] Activate');
   e.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
