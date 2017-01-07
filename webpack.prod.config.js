@@ -2,6 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -24,9 +25,11 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-      new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
+      new CopyWebpackPlugin([
+      { from: './src/index.html', to: 'index.html' },
+      { from: './src/manifest.json', to: 'manifest.json' },
+      { from: './src/sw.js', to: 'sw.js' }
+    ]),
   ],
 
   module: {
