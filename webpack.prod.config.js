@@ -1,12 +1,13 @@
 "use strict";
 const path = require('path')
 const webpack = require('webpack')
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
   entry: path.join(__dirname, 'src/index.js'),
   output: {
+    publicPath: '/',
     path: path.join(__dirname, 'build/'),
     filename: 'bundle.js'
   },
@@ -23,10 +24,9 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-      new CopyWebpackPlugin([
-        {from: 'public'}
-        ]
-      )
+      new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
   ],
 
   module: {

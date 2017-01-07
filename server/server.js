@@ -4,7 +4,7 @@ const express = require('express')
 module.exports = {
   app: function () {
     const app = express()
-    const indexPath = path.join(__dirname, '/../public/index.html')
+    const indexPath = path.join(__dirname, '/../src/index.html')
     const publicPath = express.static(path.join(__dirname, '../build'))
 
     app.use('/build', publicPath)

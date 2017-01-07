@@ -1,8 +1,8 @@
 "use strict";
 var webpack = require('webpack');
 var path = require('path');
-var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
 	devtool: 'source-map',
 	entry: [ 
@@ -10,6 +10,7 @@ module.exports = {
 		path.join(__dirname, 'src/index.js')
 	],
 	output: {
+		publicPath: '/',
 	    path: path.join(__dirname, 'build/'),
 	    filename: 'bundle.js'
 	},
@@ -68,6 +69,9 @@ module.exports = {
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(), // Hot reload on the go
 	    new webpack.NoErrorsPlugin(),
+	    new HtmlWebpackPlugin({
+	      template: './src/index.html'
+	    }),
 	]
 	
 }
