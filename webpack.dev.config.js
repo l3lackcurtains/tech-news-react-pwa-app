@@ -12,7 +12,7 @@ module.exports = {
 	],
 	output: {
 		publicPath: '/',
-	    path: path.join(__dirname, 'build/'),
+	    path: path.join(__dirname, '/build'),
 	    filename: 'bundle.js'
 	},
 	module: {
@@ -69,10 +69,7 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(), // Hot reload on the go
-	    new webpack.NoErrorsPlugin(),
-	    new HtmlWebpackPlugin({
-	      template: './src/index.html'
-	    }),
+	    new webpack.NoErrorsPlugin()
 	]
 	
 }

@@ -39,7 +39,6 @@ const fetchNews = (source) =>
 			dispatch(recNews(response.data.articles))
 		})
 		.catch( (response) => {
-			alert("You are offline.")
 			dispatch(recErr(response.data))
 		} )
 		if ('caches' in window) {
