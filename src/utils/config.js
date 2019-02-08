@@ -1,5 +1,3 @@
-const C = {
-	API_KEY: "7d634171524b4c938a6a8afaccd1c2a8"
-}
-
-export default C;
+export default {
+  newsApiKey: "c71d6f06e4ef443683cca366dcde2ac7"
+};
