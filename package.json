@@ -24,7 +24,8 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "prod": "serve -s build",
-    "heroku-postbuild": "npm run build"
+    "heroku-prebuild": "",
+    "heroku-postbuild": ""
   },
   "eslintConfig": {
     "extends": "react-app"
