@@ -11,7 +11,11 @@ const styles = {
     margin: 48
   },
   errMessage: {
-    margin: 16
+    margin: 16,
+    paddingBottom: 24
+  },
+  reloadButton: {
+    marginTop: 16
   }
 };
 class Home extends Component {
@@ -35,7 +39,7 @@ class Home extends Component {
         <Button
           color="secondary"
           variant="outlined"
-          className={classes.button}
+          className={classes.reloadButton}
           onClick={() => this.props.history.goBack()}
         >
           <LoopIcon />
