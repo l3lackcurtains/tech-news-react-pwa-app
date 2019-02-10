@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Grid, Row, Col } from "react-flexbox-grid";
+
+import ProgressBar from "../Components/ProgressBar";
 import NewsBox from "../Components/NewsBox";
 
 import config from "../Utils/config";
@@ -24,12 +27,23 @@ class Home extends Component {
 
   render() {
     const { articles } = this.state;
+    if (articles.length === 0) {
+      return (
+        <React.Fragment>
+          <ProgressBar />
+        </React.Fragment>
+      );
+    }
     return (
-      <div>
-        {articles.map(article => (
-          <NewsBox key={article.source.name} article={article} />
-        ))}
-      </div>
+      <Grid fluid>
+        <Row>
+          {articles.map(article => (
+            <Col xs={12} md={6} lg={4}>
+              <NewsBox key={article.source.name} article={article} />
+            </Col>
+          ))}
+        </Row>
+      </Grid>
     );
   }
 }

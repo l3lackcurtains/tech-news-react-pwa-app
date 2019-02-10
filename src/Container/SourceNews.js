@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import NewsBox from "../Components/NewsBox";
+import { Grid, Row, Col } from "react-flexbox-grid";
+
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
@@ -10,7 +11,8 @@ import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
+import ProgressBar from "../Components/ProgressBar";
+import NewsBox from "../Components/NewsBox";
 import config from "../Utils/config";
 
 const styles = {
@@ -52,6 +54,9 @@ class SourceNews extends Component {
   }
 
   fetchNews = async source => {
+    this.setState({
+      articles: []
+    });
     const newsArticles = await axios.get(
       `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${
         config.newsApiKey
@@ -83,6 +88,14 @@ class SourceNews extends Component {
     const { articles, sources } = this.state;
     const { classes } = this.props;
     const pathSource = this.props.match.params.source;
+
+    if (articles.length === 0) {
+      return (
+        <React.Fragment>
+          <ProgressBar />
+        </React.Fragment>
+      );
+    }
     return (
       <div>
         {sources.map(source =>
@@ -105,6 +118,7 @@ class SourceNews extends Component {
                     className="visitSource"
                     variant="outlined"
                     color="primary"
+                    href={source.url}
                   >
                     Visit Website
                     <ArrowForwardIcon />
@@ -114,12 +128,15 @@ class SourceNews extends Component {
             </div>
           ) : null
         )}
-        {articles.map((article, index) => (
-          <NewsBox
-            key={`${article.title.charAt(0)}-${index}`}
-            article={article}
-          />
-        ))}
+        <Grid fluid>
+          <Row>
+            {articles.map(article => (
+              <Col xs={12} md={6} lg={4}>
+                <NewsBox key={article.source.name} article={article} />
+              </Col>
+            ))}
+          </Row>
+        </Grid>
       </div>
     );
   }

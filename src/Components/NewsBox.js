@@ -30,7 +30,7 @@ const styles = theme => ({
     color: "#c5c5c5"
   },
   media: {
-    height: 250,
+    height: 270,
     backgroundColor: "#666"
   },
   header: {
@@ -64,8 +64,7 @@ class RecipeReviewCard extends React.Component {
             {article.title}
           </Typography>
           <Typography className={classes.subtitle} color="textPrimary">
-            {article.source.name} • {article.author} •{" "}
-            <Moment fromNow>{article.publishedAt}</Moment>
+            By {article.author} • <Moment fromNow>{article.publishedAt}</Moment>
           </Typography>
         </CardContent>
         <CardMedia
@@ -75,12 +74,9 @@ class RecipeReviewCard extends React.Component {
         />
 
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
+          <Button aria-label={article.source.name} color="primary">
+            {article.source.name}
+          </Button>
           <Button
             href={article.url}
             aria-label="Continue Reading"

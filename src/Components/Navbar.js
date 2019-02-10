@@ -4,11 +4,11 @@ import { withStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Divider from "@material-ui/core/Divider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -16,8 +16,13 @@ import config from "../Utils/config";
 import logo from "../assets/images/long-light-logo.png";
 
 const styles = {
+  drawer: {
+    height: "100%",
+    position: "relative"
+  },
   list: {
-    width: 250
+    width: 250,
+    overflowX: "hidden"
   },
   fullList: {
     width: "auto"
@@ -25,8 +30,27 @@ const styles = {
   source: {
     margin: 8
   },
-  sourceLink: {
+  menuItem: {
     textDecoration: "none"
+  },
+  menuTitle: {
+    paddingLeft: 28,
+    paddingTop: 20,
+    paddingBottom: 20,
+    fontWeight: 600,
+    fontSize: 24,
+    color: "#fff",
+    textTransform: "uppercase",
+    background: "#3B3B98"
+  },
+  menuText: {
+    color: "#555",
+    margin: 0,
+    fontWeight: 400
+  },
+  activeMenuText: {
+    color: "#3B3B98",
+    fontWeight: 500
   }
 };
 
@@ -58,27 +82,51 @@ class Navbar extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    const menuPath = window.location.pathname;
     const sideList = (
       <div className={classes.list}>
+        <div className={classes.menuTitle}>Tech News</div>
+        <Divider />
+        <List>
+          <Link className={classes.menuItem} to="/">
+            <ListItem className={classes.source} button>
+              <p
+                className={`
+                      ${classes.menuText}
+                      ${menuPath === "/" ? classes.activeMenuText : ""}`}
+              >
+                Top Headlines
+              </p>
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
         <List>
           {this.state.sources &&
             this.state.sources.map((source, index) => (
               <Link
-                className={classes.sourceLink}
+                className={classes.menuItem}
                 to={`/news/${source.id}`}
                 key={source.id}
               >
                 <ListItem className={classes.source} button>
-                  <ListItemText primary={source.name} />
+                  <p
+                    className={`
+                      ${classes.menuText}
+                      ${
+                        menuPath === "/news/" + source.id
+                          ? classes.activeMenuText
+                          : ""
+                      }`}
+                  >
+                    {source.name}
+                  </p>
                 </ListItem>
               </Link>
             ))}
         </List>
       </div>
     );
-
-    console.log(this.state);
 
     return (
       <React.Fragment>
@@ -96,6 +144,7 @@ class Navbar extends React.Component {
           </Toolbar>
         </AppBar>
         <SwipeableDrawer
+          className={classes.drawer}
           open={this.state.left}
           onClose={this.toggleDrawer("left", false)}
           onOpen={this.toggleDrawer("left", true)}
