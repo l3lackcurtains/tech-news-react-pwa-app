@@ -54,19 +54,23 @@ class SourceNews extends Component {
   }
 
   fetchNews = async source => {
-    this.setState({
-      articles: []
-    });
-    const newsArticles = await axios.get(
-      `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${
-        config.newsApiKey
-      }`
-    );
-
-    if (newsArticles.data.status === "ok") {
+    try {
       this.setState({
-        articles: newsArticles.data.articles
+        articles: []
       });
+      const newsArticles = await axios.get(
+        `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${
+          config.newsApiKey
+        }`
+      );
+
+      if (newsArticles.data.status === "ok") {
+        this.setState({
+          articles: newsArticles.data.articles
+        });
+      }
+    } catch (e) {
+      this.props.history.push("/offline");
     }
   };
 
@@ -76,7 +80,6 @@ class SourceNews extends Component {
         config.newsApiKey
       }`
     );
-
     if (newsSources.data.status === "ok") {
       this.setState({
         sources: newsSources.data.sources

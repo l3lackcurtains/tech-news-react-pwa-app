@@ -5,10 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import red from "@material-ui/core/colors/red";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Moment from "react-moment";
@@ -41,9 +37,6 @@ const styles = theme => ({
   },
   readmore: {
     marginLeft: "auto"
-  },
-  avatar: {
-    backgroundColor: red[500]
   }
 });
 

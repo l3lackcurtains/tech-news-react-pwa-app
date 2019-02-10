@@ -1,10 +1,7 @@
-importScripts("/precache-manifest.92274315ea86ebf31d8827527e40c849.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/precache-manifest.95670afe5779d419919377cd94677fa5.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
-}
+/* eslint-disable */
+
 const staticFiles = [
   "./",
   "./manifest.json",
@@ -17,11 +14,9 @@ const staticFiles = [
 workbox.clientsClaim();
 self.__precacheManifest = staticFiles.concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-workbox.routing.registerNavigationRoute("/index.html", {
-  blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/]
-});
+workbox.routing.registerNavigationRoute("/index.html", {});
 
 workbox.routing.registerRoute(
   new RegExp("https://newsapi.org/(.*)"),

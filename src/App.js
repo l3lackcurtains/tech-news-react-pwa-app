@@ -6,6 +6,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Container/Home";
 import SourceNews from "./Container/SourceNews";
+import Offline from "./Container/Offline";
 
 const theme = createMuiTheme({
   palette: {
@@ -37,6 +38,7 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/news/:source" component={SourceNews} />
+                <Route path="/offline" component={Offline} />
               </Switch>
             </main>
           </Router>

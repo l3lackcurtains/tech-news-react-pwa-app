@@ -12,16 +12,20 @@ class Home extends Component {
   };
 
   componentDidMount = async () => {
-    const newsArticles = await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${
-        config.newsApiKey
-      }`
-    );
+    try {
+      const newsArticles = await axios.get(
+        `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${
+          config.newsApiKey
+        }`
+      );
 
-    if (newsArticles.data.status === "ok") {
-      this.setState({
-        articles: newsArticles.data.articles
-      });
+      if (newsArticles.data.status === "ok") {
+        this.setState({
+          articles: newsArticles.data.articles
+        });
+      }
+    } catch (e) {
+      this.props.history.push("/offline");
     }
   };
 
@@ -37,8 +41,13 @@ class Home extends Component {
     return (
       <Grid fluid>
         <Row>
-          {articles.map(article => (
-            <Col xs={12} md={6} lg={4}>
+          {articles.map((article, index) => (
+            <Col
+              xs={12}
+              md={6}
+              lg={4}
+              key={`${article.title.charAt(0)}-${index}`}
+            >
               <NewsBox key={article.source.name} article={article} />
             </Col>
           ))}
