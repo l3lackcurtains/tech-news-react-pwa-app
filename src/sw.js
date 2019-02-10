@@ -4,6 +4,7 @@ if (workbox) {
   console.log(`Boo! Workbox didn't load 😬`);
 }
 const staticFiles = [
+  "./",
   "./manifest.json",
   "./favicon.png",
   "./icons/app-icon-256.png",
