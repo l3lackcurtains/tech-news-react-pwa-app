@@ -1,6 +1,6 @@
 ## Tech News Progressive Web App in ReactJS
-
-Build with React, Redux, React Router, Webpack, Babel, Axios
+- Works offline across mobile and web.
+- Build with React, Redux, React Router & Workbox
 
 ### Live Demo
 
@@ -9,5 +9,9 @@ Build with React, Redux, React Router, Webpack, Babel, Axios
 ### starting the project
 
 ```
-  npm start
+  yarn start
 ```
+
+### Screenshot
+| ![screenshot-1](./resources/screenshot1.png)  | ![screenshot-2](./resources/screenshot2.png)  |
+|---|---|
