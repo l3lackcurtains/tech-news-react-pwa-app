@@ -15,3 +15,6 @@
 ### Screenshot
 | ![screenshot-1](./resources/screenshot1.png)  | ![screenshot-2](./resources/screenshot2.png)  |
 |---|---|
+
+### License
+[MIT License](./LICENSE)
